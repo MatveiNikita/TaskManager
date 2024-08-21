@@ -1,19 +1,19 @@
 package com.taskManager.TaskManager.requests;
 
 public class SigInRequest {
-    private String userName;
+    private String username;
     private String password;
 
     public SigInRequest() {
     }
 
     public SigInRequest(String userName, String password) {
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {

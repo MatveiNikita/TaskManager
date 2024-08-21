@@ -3,8 +3,10 @@ package com.taskManager.TaskManager.services;
 import com.taskManager.TaskManager.model.User;
 import com.taskManager.TaskManager.payload.CreateUserPayload;
 import com.taskManager.TaskManager.repositoties.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,9 @@ public class UserServiceImpl implements UserService{
         this.userRepository = userRepository;
     }
 
+    private User save(User user){
+        return userRepository.save(user);
+    }
     @Override
     public User createUser(CreateUserPayload createUserPayload) {
         if (userRepository.existsByUsername(createUserPayload.name())){
@@ -30,7 +35,7 @@ public class UserServiceImpl implements UserService{
             throw new RuntimeException(String.format("User with this email: /s is created", createUserPayload.email()));
         }
 
-        return userRepository.save(new User(createUserPayload.name(), createUserPayload.password(), createUserPayload.email()));
+        return save(new User(createUserPayload.name(), createUserPayload.password(), createUserPayload.email()));
     }
 
     @Override
@@ -48,6 +53,11 @@ public class UserServiceImpl implements UserService{
     public User getByUserName(String userName) {
         return userRepository.findByUsername(userName)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User with this name: /s wasn't founded", userName)));
+    }
+
+    //Need for Spring Security
+    public UserDetailsService userDetailsService(){
+        return this::getByUserName;
     }
 
     public User getCurrentUser(){

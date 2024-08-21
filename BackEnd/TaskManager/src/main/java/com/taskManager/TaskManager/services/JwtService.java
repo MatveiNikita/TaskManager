@@ -18,7 +18,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    @Value("${token.signing.key}")
+    @Value("${token.spring.key}")
     private String JwtSigInToken;
 
     private Key getSigningKey() {
@@ -56,7 +56,11 @@ public class JwtService {
 
     }
 
-    public String getUserName(String token) {
+    public boolean isTokenValid(String token, UserDetails userDetails){
+        final String username = getUsername(token);
+        return (username.equals(userDetails.getUsername())) && isTokenExpired(token);
+    }
+    public String getUsername(String token) {
         return extractClaims(token, Claims::getSubject);
     }
 

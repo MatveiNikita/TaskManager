@@ -1,4 +1,4 @@
-package com.taskManager.TaskManager;
+package com.taskManager.TaskManager.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

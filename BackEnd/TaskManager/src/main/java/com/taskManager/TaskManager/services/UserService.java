@@ -2,6 +2,7 @@ package com.taskManager.TaskManager.services;
 
 import com.taskManager.TaskManager.model.User;
 import com.taskManager.TaskManager.payload.CreateUserPayload;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,4 +14,5 @@ public interface UserService {
     void deleteUserById(UUID idOfDeletedUser);
 
     User getByUserName(String userName);
+    UserDetailsService userDetailsService();
 }
