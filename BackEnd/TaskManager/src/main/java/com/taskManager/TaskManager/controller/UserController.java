@@ -27,7 +27,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    @GetMapping("/")
+    @GetMapping()
     public String welcomePage(HttpServletRequest httpServletRequest, Model model){
         UserDetails userDetails = (UserDetails) ((Authentication)httpServletRequest.getUserPrincipal())
                 .getPrincipal();

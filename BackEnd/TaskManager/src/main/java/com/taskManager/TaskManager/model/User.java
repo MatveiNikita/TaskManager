@@ -1,19 +1,18 @@
 package com.taskManager.TaskManager.model;
 
+
+import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
 import jakarta.validation.constraints.Email;
-import lombok.*;
-import org.springframework.context.support.BeanDefinitionDsl;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Builder
 @Table(name = "users")
 public class User implements UserDetails {
 
@@ -38,7 +37,6 @@ public class User implements UserDetails {
     }
 
     public User(String username, String password, String email) {
-        this.id = UUID.randomUUID();
         this.username = username;
         this.password = password;
         this.email = email;
@@ -72,20 +70,16 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     public UUID getId() {
         return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public void setUsername(String username) {

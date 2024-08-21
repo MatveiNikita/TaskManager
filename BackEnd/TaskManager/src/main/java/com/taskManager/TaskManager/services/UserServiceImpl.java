@@ -2,8 +2,7 @@ package com.taskManager.TaskManager.services;
 
 import com.taskManager.TaskManager.model.User;
 import com.taskManager.TaskManager.payload.CreateUserPayload;
-import com.taskManager.TaskManager.repositoties.UserRepository;
-import lombok.RequiredArgsConstructor;
+import com.taskManager.TaskManager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
+@Service("userServiceImpl")
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;

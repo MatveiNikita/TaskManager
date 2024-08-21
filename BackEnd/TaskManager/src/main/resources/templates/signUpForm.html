@@ -78,7 +78,7 @@
 
 <div class="container">
     <h2>Create Account</h2>
-    <form th:action="@{/save-created}" method="post">
+    <form th:action="@{/auth/sign-up}" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required autofocus>
 
@@ -93,7 +93,7 @@
 
         <input type="submit" value="Create Account">
     </form>
-    <p><a th:href="@{/login}">Already have an account? Sign in here.</a></p>
+    <p><a th:href="@{/auth/sign-in}">Already have an account? Sign in here.</a></p>
 </div>
 
 </body>

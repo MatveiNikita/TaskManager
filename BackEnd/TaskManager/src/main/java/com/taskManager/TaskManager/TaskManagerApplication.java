@@ -27,7 +27,6 @@ import javax.sql.DataSource;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @SpringBootApplication
-@EnableWebSecurity(debug = true)
 public class TaskManagerApplication {
 
 	public static void main(String[] args) {

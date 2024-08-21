@@ -5,6 +5,8 @@ import com.taskManager.TaskManager.filter.CustomDeniedClientFilter;
 import com.taskManager.TaskManager.JdbcUserDetailService;
 import com.taskManager.TaskManager.filter.JwtAuthFilter;
 import com.taskManager.TaskManager.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,6 +14,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -28,10 +31,11 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private final JwtAuthFilter authFilter;
+    @Autowired
     private final UserService userService;
 
     public SecurityConfig(JwtAuthFilter authFilter, UserService userService) {
@@ -56,7 +60,7 @@ public class SecurityConfig {
                     return corsConfiguration;
                 }))
                 .addFilterBefore(new CustomDeniedClientFilter(), DisableEncodeUrlFilter.class)
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/login"))
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/auth//sign-in"))
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
                                 .requestMatchers("/auth/**").permitAll()
@@ -68,7 +72,7 @@ public class SecurityConfig {
                         formLogin.successHandler(successHandler))
                 .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer
                         .authenticationEntryPoint((request, response, authException) ->
-                                response.sendRedirect("http://localhost:8080/login")));
+                                response.sendRedirect("http://localhost:8080/auth/sign-in")));
 
         return http.build();
     }

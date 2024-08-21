@@ -1,12 +1,12 @@
-package com.taskManager.TaskManager.repositoties;
+package com.taskManager.TaskManager.repositories;
 
 import com.taskManager.TaskManager.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-@Repository
+@EnableJpaRepositories
 public interface TaskRepository extends JpaRepository<Task, UUID> {
 }

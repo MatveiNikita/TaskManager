@@ -2,6 +2,6 @@ package com.taskManager.TaskManager.controller;
 
 import org.springframework.stereotype.Controller;
 
-@Controller("Task")
+@Controller()
 public class TaskController {
 }

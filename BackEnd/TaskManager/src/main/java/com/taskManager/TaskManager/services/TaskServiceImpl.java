@@ -3,8 +3,8 @@ package com.taskManager.TaskManager.services;
 import com.taskManager.TaskManager.model.Task;
 import com.taskManager.TaskManager.model.User;
 import com.taskManager.TaskManager.payload.CreateTaskPayload;
-import com.taskManager.TaskManager.repositoties.TaskRepository;
-import com.taskManager.TaskManager.repositoties.UserRepository;
+import com.taskManager.TaskManager.repositories.TaskRepository;
+import com.taskManager.TaskManager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

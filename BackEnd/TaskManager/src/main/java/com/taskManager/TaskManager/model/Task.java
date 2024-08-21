@@ -1,6 +1,8 @@
 package com.taskManager.TaskManager.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import jakarta.persistence.Id;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.UUID;
