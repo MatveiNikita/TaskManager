@@ -18,7 +18,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     @Column(name = "username", unique = true, nullable = false)
     private String username;
@@ -50,17 +50,17 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true; // Custom logic if needed
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true; // Custom logic if needed
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return true; // Custom logic if needed
+        return true;
     }
 
     @Override
@@ -78,7 +78,7 @@ public class User implements UserDetails {
         return username;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 

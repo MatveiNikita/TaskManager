@@ -12,7 +12,7 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
     private String title;
     private String description;
     @Enumerated(EnumType.STRING)
@@ -27,7 +27,6 @@ public class Task {
     }
 
     public Task(String title, String description, TaskStatus status, Priority priority, User owner) {
-        this.id = UUID.randomUUID();
         this.title = title;
         this.description = description;
         this.status = status;
@@ -36,11 +35,11 @@ public class Task {
         this.owner = owner;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -8,8 +8,8 @@ import java.util.UUID;
 
 
 public interface TaskService{
-    void createTask(CreateTaskPayload taskPayload, UUID idOfOwner);
-    void getTaskById(UUID ifOfTask);
-    void updateDescriptionOfTask(UUID idOfTask,String description);
-    void deleteTaskById(UUID idOfTask);
+    void createTask(CreateTaskPayload taskPayload, Long idOfOwner);
+    void getTaskById(Long ifOfTask);
+    void updateDescriptionOfTask(Long idOfTask,String description);
+    void deleteTaskById(Long idOfTask);
 }

@@ -10,8 +10,8 @@ import java.util.UUID;
 @Service
 public interface UserService {
     User createUser(CreateUserPayload createUserPayload);
-    Optional<User> getUserById(UUID idOfUser);
-    void deleteUserById(UUID idOfDeletedUser);
+    Optional<User> getUserById(Long idOfUser);
+    void deleteUserById(Long idOfDeletedUser);
 
     User getByUserName(String userName);
     UserDetailsService userDetailsService();

@@ -24,23 +24,23 @@ public class TaskServiceImpl implements TaskService{
     }
 
     @Override
-    public void createTask(CreateTaskPayload taskPayload, UUID idOfOwner) {
+    public void createTask(CreateTaskPayload taskPayload, Long idOfOwner) {
         Optional<User> owner = userRepository.findById(idOfOwner);
         Task newTask = new Task(taskPayload.title(), taskPayload.description(), taskPayload.status(), taskPayload.priority(), owner.get());
     }
 
     @Override
-    public void getTaskById(UUID ifOfTask) {
+    public void getTaskById(Long ifOfTask) {
 
     }
 
     @Override
-    public void updateDescriptionOfTask(UUID idOfTask, String description) {
+    public void updateDescriptionOfTask(Long idOfTask, String description) {
 
     }
 
     @Override
-    public void deleteTaskById(UUID idOfTask) {
+    public void deleteTaskById(Long idOfTask) {
 
     }
 }

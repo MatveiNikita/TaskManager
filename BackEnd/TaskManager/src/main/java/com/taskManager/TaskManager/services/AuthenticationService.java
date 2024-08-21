@@ -46,6 +46,7 @@ public class AuthenticationService {
                 .loadUserByUsername(request.getUsername());
 
         var jwt = jwtService.generatedToken(user);
+        System.out.println(jwt);
         return new JwtAuthenticationResponse(jwt);
     }
 }
