@@ -1,0 +1,93 @@
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                background: linear-gradient(120deg, #2980b9, #6dd5fa, #ffffff);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                color: #333;
+            }
+            .container {
+                background: rgba(255, 255, 255, 0.9);
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                max-width: 400px;
+            }
+            .container h2 {
+                font-size: 2.5em;
+                margin-bottom: 20px;
+                color: #2980b9;
+                border-bottom: 2px solid #2980b9;
+                padding-bottom: 10px;
+                text-align: center;
+            }
+            .container form {
+                display: flex;
+                flex-direction: column;
+            }
+            .container label {
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+            .container input[type="text"],
+            .container input[type="password"] {
+                padding: 10px;
+                margin-bottom: 20px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 1em;
+            }
+            .container input[type="submit"] {
+                padding: 12px 24px;
+                background: #2980b9;
+                color: white;
+                border: none;
+                border-radius: 25px;
+                font-size: 1.1em;
+                cursor: pointer;
+                transition: background 0.3s ease, transform 0.3s ease;
+            }
+            .container input[type="submit"]:hover {
+                background: #3498db;
+                transform: translateY(-2px);
+            }
+            .container input[type="submit"]:active {
+                background: #2980b9;
+                transform: translateY(0);
+            }
+            .container p {
+                margin-top: 20px;
+                color: red;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div class="container">
+        <h2>Login</h2>
+        <form th:action="@{/login}" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required autofocus>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Sign In">
+        </form>
+        <p><a href="http://localhost:8080/create">Don't you have an account?</a></p>
+    </div>
+
+    </body>
+    </html>
